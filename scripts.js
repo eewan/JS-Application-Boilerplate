@@ -1,6 +1,6 @@
 /*!
  *
- * JavaScript Application Boilerplate
+ * JavaScript Application Boilerplate v. 1.0
  * http://darcyclarke.me/development/javascript-applications-101/
  *
  * Copyright 2011, Darcy Clarke
@@ -28,7 +28,16 @@
     // subscriptions
     App.subscriptions = {};
     
-    // pubsub
+    //
+    // paul irish's console log
+    // http://paulirish.com/2009/log-a-lightweight-wrapper-for-consolelog/
+    //
+    window.log=function(){log.history=log.history||[];log.history.push(arguments);if(this.console){console.log(Array.prototype.slice.call(arguments))}};
+	
+	//
+    // modified version of peter higgens pubsub
+    // https://github.com/phiggins42/bloody-jquery-plugins/blob/master/pubsub.js
+    //
     App.publish = function(topic, args){
       App.subscriptions[topic] && $.each(App.subscriptions[topic], function(){
           this.apply(App, args || []);
